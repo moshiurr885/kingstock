@@ -1,0 +1,28 @@
+{% if pagination.pages > 1 %}
+<div class="basic-pagination mb-100">
+    <nav class="pagination-page" aria-label="Page navigation example">
+        <ul class="pagination align-items-center">
+            {% if pagination.previous %}
+
+            <li class="page-item">
+                <a class="page-link" href="{{pagination.prevous.url}}"><i class="fas fa-angle-left"></i></a>
+            </li>
+            {% endif %}
+            {% for part in pagination.parts %}
+            {% if part.is_link %}
+            <li class="page-item"><a class="page-link" href="{{part.url}}">{{part.title}}</a></li>
+            {% else %}
+            <li class="page-item active"><span class="page-link">{{part.title}}</span></li>
+            {% endif %}
+
+            {% endfor %}
+            {% if pagination.next %}
+            <li class="page-item">
+                <a class="page-link" href="{{pagination.next.url}}"><i class="fas fa-angle-right"></i></a>
+            </li>
+            {% endif %}
+
+        </ul>
+    </nav>
+</div>
+{% endif %}
