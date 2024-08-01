@@ -8,13 +8,46 @@
     <link rel="canonical" href="{{ canonical_url }}">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     {{ content_for_header }}
-    <!-- Header hook for plugins -->
-    {{ 'application.css' | asset_url | stylesheet_tag }}
-    {{ 'application.js' | asset_url | script_tag }}
+
+
+    {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+    {{ 'all.min.css' | asset_url | stylesheet_tag }}
+    {{ 'animate.css' | asset_url | stylesheet_tag }}
+    {{ 'meanmenu.css' | asset_url | stylesheet_tag }}
+    {{ 'fontawesome-all.min.css' | asset_url | stylesheet_tag }}
+    {{ 'jquery.fancybox.min.css' | asset_url | stylesheet_tag }}
+    {{ 'slick.css' | asset_url | stylesheet_tag }}
+    {{ 'nice-select.css' | asset_url | stylesheet_tag }}
+    {{ 'icomoon.css' | asset_url | stylesheet_tag }}
+    {{ 'flaticon.css' | asset_url | stylesheet_tag }}
+    {{ 'default.css' | asset_url | stylesheet_tag }}
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+    {{ 'responsive.css' | asset_url | stylesheet_tag }}
+
+    
   </head>
   <body>
     <main role="main">
+      {% section 'header' %}
       {{ content_for_layout }}
     </main>
+
+
+    
+
+    {{ 'modernizr-3.5.0.min.js' | asset_url | script_tag }}
+    {{ 'jquery-3.6.0.min.js' | asset_url | script_tag }}
+    {{ 'jquery.inputarrow.js' | asset_url | script_tag }}
+    {{ 'popper.min.js' | asset_url | script_tag }}
+    {{ 'bootstrap.min.js' | asset_url | script_tag }}
+    {{ 'wow.min.js' | asset_url | script_tag }}
+    {{ 'jquery.nice-select.min.js' | asset_url | script_tag }}
+    {{ 'jquery.elevateZoom-3.0.8.min.js' | asset_url | script_tag }}
+    {{ 'jquery.elevateZoom-3.0.8.min.js' | asset_url | script_tag }}
+    {{ 'jquery.fancybox.min.js' | asset_url | script_tag }}
+    {{ 'slick.min.js' | asset_url | script_tag }}
+    {{ 'jquery.meanmenu.min.js' | asset_url | script_tag }}
+    {{ 'plugins.js' | asset_url | script_tag }}
+    {{ 'main.js' | asset_url | script_tag }}
   </body>
 </html>

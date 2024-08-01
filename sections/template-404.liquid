@@ -1,0 +1,70 @@
+<div class="slider-area over-hidden">
+    <div class="single-page not-found-page-height d-flex align-items-center justify-content-center"
+        data-background="images/slider/not-found.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10  col-lg-12  col-md-12  col-sm-12 col-12 offset-xl-1">
+                    <div class="page-content text-center">
+                        <h2 class="mt-30 font600">{{section.settings.title}}</h2>
+                        <h4 class="pb-25">{{section.settings.subtitle}}</h4>
+                        <p>{{section.settings.description}}</p>
+                        {% if section.settings.show_search_box %}
+                           <div class="blog-search position-relative mt-25 ml-90 mr-90">
+                            <input class="form-control" type="text" placeholder="Search ...">
+                            <a class="position-absolute primary-color" href="#"><span><i
+                                        class="far fa-search"></i></span></a>
+                        </div>  
+                        {% endif %}
+                       
+                        <a href="{{section.settings.button_url}}"
+                            class="web-btn  theme-border  d-inline-block mt-50 text-uppercase white theme-bg position-relative rounded-0 over-hidden pl-60 pr-60 pt-20 pb-20">{{section.settings.button_text}}</a>
+                    </div>
+                </div><!-- /col -->
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name": "Template 404",
+    "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "404"  
+            },
+            {
+                "type": "text",
+                "id": "subtitle",
+                "label": "Sub Titlte",
+                "default": "Error. We cant find the page youre looking for."  
+            },
+            {
+                "type": "text",
+                "id": "description",
+                "label": "Description",
+                "default": "Sorry for the inconvenience. Go to our homepage or check out our latest collections.."  
+            },
+            {
+                "type": "checkbox",
+                "id": "show_search_box",
+                "label": "Show Search Box",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "button_text",
+                "label": "Button Text",
+                "default": "back to home page"  
+            },
+            {
+                "type": "url",
+                "id": "button_url",
+                "label": "Button Link"
+            }
+     ]
+}
+{% endschema %}
