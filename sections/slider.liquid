@@ -1,0 +1,101 @@
+<div class="slider-area over-hidden">
+    
+    <div class="slider-active">
+        {% for slide in section.blocks %}
+        <div class="single-slider slider-height d-flex align-items-center"
+            data-background="{% if slide.settings.slider_bg_image != blank %}{{slide.settings.slider_bg_image | image_url }} {% else %}{{'home1-slider-bg.png' | asset_url}} {% endif %}">
+            <div class="slider-shape p osition-absolute">
+                <span class="slider-bg-round d-block"></span>
+            </div><!-- /slider-shape -->
+            <div class="container">
+                <div class="row pt-65 ">
+                    <div class="col-xl-6  col-lg-6  col-md-7  col-sm-12 col-12 d-flex align-items-center">
+                        <div class="slider-content mt--15">
+                            <span data-animation="fadeInLeft" data-delay=".7s"
+                                class="d-block theme-color">{{slide.settings.slider_title_one}}</span>
+                            <h2 data-animation="fadeInLeft" data-delay="1s" class="pt-15 mb-1 text-capitalize pb-10">
+                                {{slide.settings.slider_title}}</h2>
+                            <p class="pr-20" data-animation="fadeInLeft" data-delay="1.5s">
+                                {{slide.settings.slider_sub_title}}</p>
+                            <a data-animation="fadeInUp" data-delay="1.7s" href="{{slide.settings.slider_button_url}}"
+                                class="web-btn  theme-border  d-inline-block mt-2 text-uppercase white theme-bg position-relative over-hidden pl-30 pr-30 ptb-17">{{slide.settings.slider_button_text}}
+                                now<span class="pl-2"><i class="fas fa-long-arrow-alt-right"></i></span></a>
+                        </div>
+                    </div><!-- /col -->
+                    <div class="col-xl-6  col-lg-6  col-md-5  col-sm-12 col-12 d-flex align-items-center">
+                        <div class="slider-img mt-35" data-animation="fadeInRight" data-delay="1.5s">
+                            <img src="{% if slide.settings.slider_image != blank %}{{slide.settings.slider_image | image_url }} {% else %}{{'home1-slider-img1.png' | asset_url}} {% endif %}"
+                                alt="">
+                        </div>
+                    </div><!-- /col -->
+                </div><!-- /row -->
+            </div><!-- /container -->
+        </div>
+    {% endfor %}
+    </div>
+    
+
+</div>
+
+
+{% schema %}
+{
+"name": "Slider",
+"settings": [],
+"blocks": [
+{
+"type": "slider",
+"name": "Slide",
+"settings": [
+{
+"type": "image_picker",
+"id": "slider_bg_image",
+"label": "Slide Background Image"
+
+},
+{
+"type": "text",
+"id": "slider_title_one",
+"label": "Slide Title",
+"default": "Featured Product"
+},
+{
+"type": "text",
+"id": "slider_title",
+"label": "Slide Title",
+"default": "Cosima Channel <br> Tufted Chair"
+},
+{
+"type": "text",
+"id": "slider_sub_title",
+"label": "Slide Sub Title",
+"default": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium"
+}, {
+"type": "text",
+"id": "slider_button_text",
+"label": "Slide Button Text",
+"default": "shop now"
+}, {
+"type": "url",
+"id": "slider_button_url",
+"label": "Slide Button Link"
+}, {
+"type": "image_picker",
+"id": "slider_image",
+"label": "Slide Image"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Slide Show",
+"blocks": [
+{
+"type": "slider"
+}
+]
+}
+]
+}
+{% endschema %}

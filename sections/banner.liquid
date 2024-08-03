@@ -1,0 +1,89 @@
+<div class="banner-area mt-80 mb-45">
+    <div class="container">
+        <div class="row">
+            {% for banner in section.blocks %}
+                <div class="col-xl-6 col-lg-6  col-md-6  col-sm-12 col-12 ">
+                <div class="banner mb-30 transition-3 position-relative over-hidden wow slideInLeft"
+                    data-wow-duration="0.9s">
+                    <a href="{{banner.settings.banner_image_link}}" class="d-block">
+                        <img class="img-zoom transition-3" src="{% if banner.settings.banner_img != blank %}{{banner.settings.banner_img| image_url }} {% else %}{{'banner1.jpg' | asset_url}} {% endif %}" alt="">
+                    </a>
+                    <div class="banner-content position-absolute transfY transfY50 w-100 pl-50">
+                        <span class="pro-tittle d-block mb-10">{{banner.settings.banner_content}}</span></span>
+                        <h4>
+                            <a href="product-details.html">{{banner.settings.banner_title}}</a>
+                        </h4>
+                        <a href="{{banner.settings.banner_button_url}}"
+                            class="web-btn   d-inline-block text-uppercase primary-color gray-border2 position-relative over-hidden px-3 ptb-7 mt-20">{{banner.settings.banner_button_text}}
+                            now <span class="pl-1"><i class="fas fa-long-arrow-alt-right"></i></span></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+"name": "banner",
+"settings": [],
+"blocks": [
+{
+"type": "banner",
+"name": "Banner",
+"settings": [
+{
+"type": "image_picker",
+"id": "banner_img",
+"label": "Banner Image "
+
+},
+{
+"type": "url",
+"id": "banner_image_link",
+"label": "Banner image Link"
+},
+{
+"type": "text",
+"id": "banner_content",
+"label": "Banner Content",
+"default": "Mega Save 20% "
+},
+{
+"type": "text",
+"id": "banner_title",
+"label": "Banner Title",
+"default": "Verne Rattan Chair <br> with Cushion"
+},
+{
+"type": "text",
+"id": "banner_button_text",
+"label": "Banner Button Text",
+"default": "shop"
+},
+{
+"type": "url",
+"id": "banner_button_url",
+"label": "Slide Button Link"
+}
+]
+}
+],
+"presets": [
+{
+"name": "banner",
+"blocks": [
+{
+"type":"banner"
+},
+{
+"type":"banner"
+}
+]
+}
+]
+}
+{% endschema %}
