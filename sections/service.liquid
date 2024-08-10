@@ -1,0 +1,92 @@
+<div class="service-area border-t-gray border-b-gray pt-45 pb-20 mb-80">
+  <div class="container">
+    <div class="row">
+      {% for service in section.blocks %}
+        <div class="col-xl-3  col-lg-3  col-md-6  col-sm-6 col-12">
+          <div class="single-service d-flex align-items-center justify-content-lg-center mb-25">
+            <div class="s-ser-icon mr-15">
+              <span class="theme-color {{service.settings.service_icon}}"></span>
+            </div>
+            <div class="s-ser-content">
+              <h5 class="mb-1">{{service.settings.service_title}}</h5>
+              <p class="mb-0">{{service.settings.service_sub_title}}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    <!-- /col -->
+    </div>
+  <!-- /row -->
+  </div>
+<!-- /container -->
+</div>
+
+{% schema %}
+  {
+    "name": "Service",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "service",
+        "name": "Service Block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "service_title",
+            "label": "Service Title",
+            "default": "Free Transport"
+          }, 
+          {
+            "type": "text",
+            "id": "service_sub_title",
+            "label": "Service Sub Title",
+            "default": "Order Over $100"
+          }, 
+          {
+            "type": "select",
+            "id": "service_icon",
+            "label": "Select",
+            "options": [
+                {
+                    "value": "flaticon-delivery-truck",
+                    "label":"Delivery Truck"
+                },
+                {
+                    "value": "flaticon-redo",
+                    "label":"Redo"
+                },
+                {
+                    "value": "flaticon-shield",
+                    "label":"Shield"
+                },
+                {
+                    "value": "flaticon-tools",
+                    "label":"Tools"
+                }
+            ]
+          }
+
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Service",
+        "blocks": [
+          {
+            "type": "service"
+          },
+          {
+            "type": "service"
+          },
+          {
+            "type": "service"
+          },
+          {
+            "type": "service"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

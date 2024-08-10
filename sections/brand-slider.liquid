@@ -1,0 +1,83 @@
+<div class="brand-logo-area bg-white over-hidden">
+  <div class="container border-t-gray pt-75 pb-75">
+    <div class="mlr--60">
+      <div class="row brand-active d-flex align-items-center justify-content-lg-between">
+
+        {% for brand in section.blocks %}
+          <div class="col-xl-12  col-lg-2  col-md-2  col-sm-2 col-2">
+            <div class="text-center">
+              <a href="{% if brand.settings.slide_link != blank %}{{brand.settings.slide_link}}{% else %}#{% endif %}" class="d-block p-1">
+                <img
+                  class="d-inline-block"
+                  src="{% if brand.settings.sbrand_image != blank %}{{brand.settings.sbrand_image | image_url}}{% else %}{{'brand1.png' | asset_url}}{% endif %}"
+                  alt="">
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+
+
+      </div>
+    <!-- /brand-active -->
+    </div>
+  </div>
+<!-- /container -->
+</div>
+
+
+{% schema %}
+  {
+    "name": "brand",
+    "settings": [
+
+      {
+        "type": "number",
+        "id": "page_per_slide",
+        "label": "Page Per Slide",
+        "default": 2
+      }
+
+    ],
+    "blocks": [
+      {
+        "type": "slider",
+        "name": "Brand Slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "sbrand_image",
+            "label": "Brand Image"
+          }, {
+            "type": "url",
+            "id": "slide_link",
+            "label": "Slide  Link"
+          }
+
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Brand Slide",
+        "blocks": [
+          {
+            "type": "slider"
+          },
+          {
+            "type": "slider"
+          },
+          {
+            "type": "slider"
+          },
+          {
+            "type": "slider"
+          }, {
+            "type": "slider"
+          }, {
+            "type": "slider"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

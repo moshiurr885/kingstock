@@ -1,0 +1,116 @@
+<div class="banner__area-2 pb-60">
+  <div class="container-fluid p-0">
+    <div class="row no-gutters">
+      {% for big_banner in section.blocks %}
+        <div class="{{section.settings.column}}">
+          <div class="banner__item-2 banner-right p-relative mb-30 pr-15">
+            <div class="banner__thumb fix">
+              <a href="{{big_banner.settings.big_banner_url}}" class="w-img"><img src="{% if big_banner.settings.big_banner_img != blank %}{{big_banner.settings. big_banner_img | image_url}}{% else %}{{'banner-big-1.jpg' |asset_url}}{% endif %} " alt="banner"></a>
+
+            </div>
+            <div class="banner__content-2 p-absolute transition-3">
+              <span>{{ big_banner.settings.big_banner_sub_title }}</span>
+              <h4>
+                <a href="{{big_banner.settings.big_banner_title_url}}">{{ big_banner.settings.big_banner_title }}</a>
+              </h4>
+              <p>{{ big_banner.settings.big_banner_content }}</p>
+              <a href="{{big_banner.settings.big_banner_button_url}}" class="web-btn d-inline-block text-uppercase primary-color gray-border2 position-relative over-hidden px-3 ptb-7">{{ big_banner.settings.big_banner_button_text }}
+                <span class="pl-1">
+                  <i class="fas fa-long-arrow-alt-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Big banner",
+    "settings": [
+        {
+            "type": "select",
+            "label": "coloumn",
+            "id": "column",
+            "options": [
+                {
+                    "value": "col-xl-6 col-lg-6",
+                    "label": "2 column"
+                },
+                {
+                    "value": "col-xl-12 col-lg-12",
+                    "label": "1 column"
+                }
+
+            ]
+        }
+    ],
+    "blocks": [
+      {
+        "type": "bigbanner",
+        "name": "Big Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "big_banner_img",
+            "label": "Banner Image "
+
+          },
+          {
+            "type": "url",
+            "id": "big_banner_url",
+            "label": "Banner Link "
+
+          },
+          {
+            "type": "text",
+            "id": "big_banner_sub_title",
+            "label": "Banner Sub Title",
+            "default": "Products Essentials "
+          },
+          {
+            "type": "text",
+            "id": "big_banner_title",
+            "label": "Banner Title",
+            "default": "Bottle With Wooden Cork"
+          }, {
+            "type": "url",
+            "id": "big_banner_title_url",
+            "label": "Banner Title Link"
+          }, {
+            "type": "richtext",
+            "id": "big_banner_content",
+            "label": "Banner Content"
+          }, {
+            "type": "text",
+            "id": "big_banner_button_text",
+            "label": "Banner Button Text",
+            "default": "shop"
+          }, {
+            "type": "url",
+            "id": "big_banner_button_url",
+            "label": "Button url"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Big Banner",
+        "blocks": [
+          {
+            "type": "bigbanner"
+          }, {
+            "type": "bigbanner"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

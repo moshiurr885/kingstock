@@ -1,95 +1,113 @@
 <div class="blog-area mt-75 pb-50">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12  col-lg-12  col-md-12  col-sm-12 col-12">
-                <div class="section-title text-center">
-                    <span class="theme-color d-block pb-2">Popular News</span>
-                    <h3>Latest News & Blog</h3>
-                </div><!-- /section-title -->
-            </div><!-- /col -->
-        </div><!-- /row -->
-        <div class="row news-post-active mt-50">
-            {% if section.settings.blog != blank %}
-            {% assign blog = blogs[section.settings.blog] %}
-            {% if blog.articles_count > 0 %}
-
-            {% for single_blog in blog.articles %}
-            <div class="col-xl-4  col-lg-4  col-md-4  col-sm-12 col-12">
-                <div class="single-blog mb-30">
-                    <div class="blog-img over-hidden transition-3">
-                        <a href="{{single_blog.url}}"><img class="img-zoom width100 height100"
-                                src="{{single_blog.image | image_url }}" alt=""></a>
-                    </div>
-                    <div class="single-blog-content bg-white pt-25">
-                        <ul class="single-blog-info d-flex mb-10">
-                            <li class="date pr-25">
-                                <a href="#" class="text-uppercase gray-color2">
-                                    <span class="pr-1"><i class="fas fa-calendar-alt"></i></span>
-                                    <span> {{single_blog.created_at | date: '%B %d , %Y'}}</span>
-                                </a>
-                            </li>
-                            <li class="comment">
-                                <a href="#" class="text-uppercase gray-color2 hvr">
-                                    <span class="pr-1"><i class="fal fa-comments"></i></span>
-                                    <span>Comment({{single_blog.comments_count}})</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <h5><a class="pb-2 d-block" href="{{single_blog.url}}">{{single_blog.title}}</a></h5>
-                        <p class="pb-1">{{single_blog.content | truncatewords: 100}}</p>
-                        <ul class="blogger d-flex align-items-center">
-                            <li>
-                                <img class="mr-2" src="{{'blog-author.png' | asset_url}}" alt="">
-                            </li>
-                            <li>
-                                <span class="primary-color"><span class="gray-color2">By</span> David
-                                    {{single_blog.author}}</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-            {% endif %}
-            {% endif %}
-
-
-
-
-
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12  col-lg-12  col-md-12  col-sm-12 col-12">
+        <div class="section-title text-center">
+          <span class="theme-color d-block pb-2">Popular News</span>
+          <h3>Latest News & Blog</h3>
         </div>
+      <!-- /section-title -->
+      </div>
+    <!-- /col -->
     </div>
+    <!-- /row -->
+    <div class="row news-post-active mt-50">
+      {% if section.settings.blog != blank %}
+        {% assign blog = blogs[section.settings.blog] %}
+        {% if blog.articles_count > 0 %}
+
+          {% for single_blog in blog.articles %}
+            <div class="col-xl-4  col-lg-4  col-md-4  col-sm-12 col-12">
+              <div class="single-blog mb-30">
+                <div class="blog-img over-hidden transition-3">
+                  <a href="{{single_blog.url}}">
+                    {% if single_blog.image != blank %}
+                      <img
+                        class="img-zoom width100 height100"
+                        src="{{single_blog.image | image_url }}"
+                        alt="">
+                    {% else %}
+                      {{ 'lifestyle-1' | placeholder_svg_tag: 'img-zoom width100 height100' }}
+                    {% endif %}
+                  </a>
+
+                </div>
+                <div class="single-blog-content bg-white pt-25">
+                  <ul class="single-blog-info d-flex mb-10">
+                    <li class="date pr-25">
+                      <a href="#" class="text-uppercase gray-color2">
+                        <span class="pr-1">
+                          <i class="fas fa-calendar-alt"></i>
+                        </span>
+                        <span>
+                          {{ single_blog.created_at | date: '%B %d , %Y' }}</span>
+                      </a>
+                    </li>
+                    <li class="comment">
+                      <a href="#" class="text-uppercase gray-color2 hvr">
+                        <span class="pr-1">
+                          <i class="fal fa-comments"></i>
+                        </span>
+                        <span>Comment({{ single_blog.comments_count }})</span>
+                      </a>
+                    </li>
+                  </ul>
+                  <h5>
+                    <a class="pb-2 d-block" href="{{single_blog.url}}">{{ single_blog.title }}</a>
+                  </h5>
+                  <p class="pb-1">{{ single_blog.content | truncatewords: 100 }}</p>
+                  <ul class="blogger d-flex align-items-center">
+                    <li>
+                      <img
+                        class="mr-2"
+                        src="{{'blog-author.png' | asset_url}}"
+                        alt="">
+                    </li>
+                    <li>
+                      <span class="primary-color">
+                        <span class="gray-color2">By</span>
+                        David
+                        {{ single_blog.author }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+
+
+    </div>
+  </div>
 </div>
 
 
-
 {% schema %}
-{
-"name": "Featured Blog",
-"settings": [
-{
-"type": "text",
-"id": "section_name",
-"label": "Section name",
-"default": "Popular News"
-},
-{
-"type": "text",
-"id": "section_blog_title",
-"label": "Section Blog Title",
-"default": "Latest News & Blog"
-},
-{
-"type": "blog",
-"id": "blog",
-"label": "blog"
-}
-],
-"presets": [
-{
-"name": "Featured Blog",
-"category":"blog"
-}
-]
-}
+  {
+    "name": "Featured Blog",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_name",
+        "label": "Section name",
+        "default": "Popular News"
+      }, {
+        "type": "text",
+        "id": "section_blog_title",
+        "label": "Section Blog Title",
+        "default": "Latest News & Blog"
+      }, {
+        "type": "blog",
+        "id": "blog",
+        "label": "blog"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured Blog",
+        "category": "blog"
+      }
+    ]
+  }
 {% endschema %}
